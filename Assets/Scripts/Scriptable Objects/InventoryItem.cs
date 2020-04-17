@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collectable : ScriptableObject
+[CreateAssetMenu(fileName = "InventoryItem", menuName = "InventoryItem")]
+public class InventoryItem : ScriptableObject
 {
     // Start is called before the first frame update
     public string objectName;
