@@ -8,7 +8,7 @@ public class SceneTransitions : MonoBehaviour
 
     public Animator transitionAnim;
     public string sceneName;
-    public bool stairCollide = false;
+    //public bool stairCollide = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,11 +29,11 @@ public class SceneTransitions : MonoBehaviour
     {
         if (other.name == "StairCollider")
         {
-            stairCollide = true;
+            StartCoroutine(LoadScene());
         }
     }
 
-    IEnumerator LoadScene()
+    public IEnumerator LoadScene()
     {
         transitionAnim.SetTrigger("end");
         yield return new WaitForSeconds(5.0f);
