@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Flashlight
   icon: {fileID: 0}
+  collected: 0
