@@ -54,6 +54,7 @@ public class LevelController : MonoBehaviour
                     Debug.Log(hit.transform.name);
                     //for collecting an object
                     if(hit.transform.tag == "InvItem"){
+                        hit.transform.GetComponent<CollectedItem>().triggered = true;
                         hit.transform.GetComponent<DialogueTrigger>().TriggerDialogue();
                     }
                     
