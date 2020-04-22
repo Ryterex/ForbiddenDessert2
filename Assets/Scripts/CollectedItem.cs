@@ -23,8 +23,11 @@ public class CollectedItem : MonoBehaviour
     {
         if(triggered){
             if(!animator.GetBool("IsOpen")){
-                this.gameObject.GetComponent<MeshCollider>().enabled = false;
-                this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                foreach(Transform child in this.gameObject.transform){
+                        child.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                        child.gameObject.GetComponent<MeshCollider>().enabled = false;
+                    }
+                item.collected = true;
                 triggered = false;
             }
         }

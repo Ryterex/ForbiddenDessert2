@@ -8,6 +8,8 @@ public class FlashlightToggle : MonoBehaviour
     public GameObject flashlight;
     public Light lightComp;
 
+    public InventoryItem fLight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,7 @@ public class FlashlightToggle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.F))
+        if (Input.GetKeyUp(KeyCode.F) && fLight.collected)
         {
             lightComp.enabled = !lightComp.enabled;
         }

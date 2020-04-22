@@ -8,4 +8,6 @@ public class InventoryItem : ScriptableObject
     // Start is called before the first frame update
     public string objectName;
     public Sprite icon;
+    public bool collected;
+
 }

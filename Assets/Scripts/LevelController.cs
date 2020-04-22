@@ -7,8 +7,8 @@ public class LevelController : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject[] inventory;
-    public bool flashlight;
-    public bool batteries;
+    public InventoryItem flashlight;
+    public InventoryItem batteries;
 
     public GameObject flashText;
 
@@ -17,6 +17,8 @@ public class LevelController : MonoBehaviour
     public GameObject Map;
     void Start()
     {
+        flashlight.collected = false;
+        batteries.collected = false;
         Map = GameObject.FindGameObjectWithTag("Map");
         flashText = GameObject.Find("FlashText");
         flashText.SetActive(false);
@@ -53,9 +55,9 @@ public class LevelController : MonoBehaviour
                 if(hit.transform != null){
                     Debug.Log(hit.transform.name);
                     //for collecting an object
-                    if(hit.transform.tag == "InvItem"){
-                        hit.transform.GetComponent<CollectedItem>().triggered = true;
-                        hit.transform.GetComponent<DialogueTrigger>().TriggerDialogue();
+                    if(hit.transform.parent.transform.tag == "InvItem"){
+                        hit.transform.parent.transform.GetComponent<CollectedItem>().triggered = true;
+                        hit.transform.parent.transform.GetComponent<DialogueTrigger>().TriggerDialogue();
                     }
                     
                 }
