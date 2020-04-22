@@ -22,7 +22,6 @@ public class CollectedItem : MonoBehaviour
     void Update()
     {
         if(triggered){
-            Debug.Log("Made it to the trigger");
             if(!animator.GetBool("IsOpen")){
                 this.gameObject.GetComponent<MeshCollider>().enabled = false;
                 this.gameObject.GetComponent<MeshRenderer>().enabled = false;
