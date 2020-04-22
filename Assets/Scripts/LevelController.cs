@@ -12,11 +12,14 @@ public class LevelController : MonoBehaviour
 
     public GameObject flashText;
 
+    public bool flash;
+
     public Animator animator;
 
     public GameObject Map;
     void Start()
     {
+        flash = false;
         flashlight.collected = false;
         batteries.collected = false;
         Map = GameObject.FindGameObjectWithTag("Map");
@@ -47,6 +50,10 @@ public class LevelController : MonoBehaviour
             }
         }
 
+        if(flashlight.collected && !flash){
+            flash = true;
+            flashText.SetActive(true);
+        }
         
 
         //this is for when interacting with an object 
@@ -58,6 +65,9 @@ public class LevelController : MonoBehaviour
                     if(hit.transform.parent.transform.tag == "InvItem"){
                         hit.transform.parent.transform.GetComponent<CollectedItem>().triggered = true;
                         hit.transform.parent.transform.GetComponent<DialogueTrigger>().TriggerDialogue();
+                    }
+                    else if(hit.transform.name == "door"){
+                        hit.transform.GetComponent<OpenDoor>().Open();
                     }
                     
                 }
