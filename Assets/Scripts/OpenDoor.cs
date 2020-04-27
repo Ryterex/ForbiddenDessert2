@@ -47,13 +47,13 @@ public class OpenDoor : MonoBehaviour
 
     void StayOpen(){
         if(!doorOpen){
-            Debug.Log("Door isnt open");
+            //Debug.Log("Door isnt open");
             this.gameObject.transform.position += newPos;
             this.gameObject.transform.eulerAngles += newRot;
             doorOpen = true;
         }
         else{
-            Debug.Log("Door is open");
+            //Debug.Log("Door is open");
             this.gameObject.transform.position -= newPos;
             this.gameObject.transform.eulerAngles -= newRot;
             doorOpen = false;

@@ -25,18 +25,37 @@ public class SceneTransitions : MonoBehaviour
     //    }
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.name == "StairCollider")
         {
             StartCoroutine(LoadScene());
         }
-    }
+
+        if (other.name == "TextTriggerParent")
+        {
+            StartCoroutine(LoadStart());
+        }
+    }*/
 
     public IEnumerator LoadScene()
     {
         transitionAnim.SetTrigger("end");
         yield return new WaitForSeconds(5.0f);
         SceneManager.LoadScene(sceneName);
+    }
+
+    public IEnumerator LoadStart()
+    {
+        transitionAnim.SetTrigger("end");
+        yield return new WaitForSeconds(8.0f);
+        SceneManager.LoadScene("MainMap");
+    }
+
+    public IEnumerator StairFail()
+    {
+        transitionAnim.SetTrigger("end");
+        yield return new WaitForSeconds(8.0f);
+        SceneManager.LoadScene("MainMap");
     }
 }
