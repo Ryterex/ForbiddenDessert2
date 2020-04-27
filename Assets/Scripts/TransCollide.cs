@@ -25,5 +25,16 @@ public class TransCollide : MonoBehaviour
         {
             StartCoroutine(SceneManager.GetComponent<SceneTransitions>().LoadScene());
         }
+
+        if (other.name == "TextTriggerParent")
+        {
+            StartCoroutine(SceneManager.GetComponent<SceneTransitions>().LoadStart());
+        }
+
+        if (other.name == "StairFailTrigger")
+        {
+            Debug.Log("StairFallText");
+            StartCoroutine(SceneManager.GetComponent<SceneTransitions>().StairFail());
+        }
     }
 }
