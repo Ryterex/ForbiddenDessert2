@@ -63,32 +63,38 @@ public class TextAppear : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //if laptop is collected dummy script
+        /*
         if (other.name == "LaptopCollectDUMMY")
         {
-            Debug.Log("you collected the laptop");
+            //Debug.Log("LaptopFoundText");
+            other.GetComponent<DialogueTrigger>().TriggerDialogue();
             isCollectedDummy = true;
-        }
+        }*/
 
         if (other.tag == "HallCollider")
         {
-            Debug.Log("HallText");
+            //Debug.Log("HallText");
+            other.GetComponent<DialogueTrigger>().TriggerDialogue();
         }
 
         if (other.name == "TextTriggerBath1")
         {
-            Debug.Log("BathroomText");
+            //Debug.Log("BathroomText");
+            other.GetComponent<DialogueTrigger>().TriggerDialogue();
         }
 
         if (other.name == "TextTriggerSis1")
         {
-            Debug.Log("SisRoomText");
+            //Debug.Log("SisRoomText");
+            other.GetComponent<DialogueTrigger>().TriggerDialogue();
             textTriggerSis1.SetActive(false);
             textTriggerStart1.SetActive(true);
         }
 
         if (other.name == "TextTriggerStart1")
         {
-            Debug.Log("StartReturnText");
+            //Debug.Log("StartReturnText");
+            other.GetComponent<DialogueTrigger>().TriggerDialogue();
             flashSpotLight.SetActive(true);
             textTriggerStart1.SetActive(false);
             stopColliderSis2.SetActive(false);
@@ -96,18 +102,21 @@ public class TextAppear : MonoBehaviour
 
         if (other.name == "TextTriggerGrand")
         {
-            Debug.Log("GrandRoomText");
+            //Debug.Log("GrandRoomText");
+            other.GetComponent<DialogueTrigger>().TriggerDialogue();
         }
 
         if (other.name == "FlashlightFlickerTrigger")
         {
-            Debug.Log("FlashFlickerText");
+            //Debug.Log("FlashFlickerText");
+            other.GetComponent<DialogueTrigger>().TriggerDialogue();
             playerLight.SetActive(false);
         }
 
         if (other.name == "FlashlightFlickerTrigger")
         {
-            Debug.Log("FlashFlickerText");
+            //Debug.Log("FlashFlickerText");
+            other.GetComponent<DialogueTrigger>().TriggerDialogue();
             batteryModel.SetActive(true);
             batteryLight.SetActive(true);
         }

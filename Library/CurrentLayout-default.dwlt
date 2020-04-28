@@ -398,18 +398,18 @@ MonoBehaviour:
       m_ExpandedIDs: 7044fffffe44ffff5e49ffff924bffff204cffff3051ffff7452ffff387dffff4c7fffff9c9cffffee9cffffc0a0ffffe2a0ffff7ac3ffff36c4ffff2cc5ffff9ac5ffff3cc6ffff76c7ffff1cc8ffff20c9ffff14ceffff62cfffff62d1ffff84d1ffffb8eeffffeaefffff38730200aa7402007e610400de6f0400428004000c810400c6820400d686040018890400
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Directional Light
+        m_OriginalName: Directional Light
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 78588
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_ShowContextualTools: 0
   m_WindowGUID: 6561879dad24bcc41a24dcb3c04e1e67
-  m_Gizmos: 1
+  m_Gizmos: 0
   m_SceneIsLit: 1
   m_SceneLighting: 1
   m_2DMode: 0
@@ -686,7 +686,7 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Scripts
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\mndp9\Desktop\GameDesign\FD2\ForbiddenDessert2
+  m_LastProjectPath: D:\unity projects\class\GameDesign2\ForbiddenDessert2\ForbiddenDessert2
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
