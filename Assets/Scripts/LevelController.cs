@@ -42,7 +42,7 @@ public class LevelController : MonoBehaviour
             FindObjectOfType<DialogueController>().DisplayNextSentence();
         }
 
-        if(Input.GetKeyUp(KeyCode.M)){
+        if(Input.GetKeyUp(KeyCode.M) && !animator.GetBool("IsOpen")){
             if(!Map.activeSelf){
                 Map.SetActive(true);
             } else{
@@ -57,7 +57,7 @@ public class LevelController : MonoBehaviour
         
 
         //this is for when interacting with an object 
-        if(Input.GetKeyUp(KeyCode.E)){
+        if(Input.GetKeyUp(KeyCode.E) && !animator.GetBool("IsOpen")){
             if(Physics.Raycast(ray,out hit,3.0f)){
                 if(hit.transform != null){
                     Debug.Log(hit.transform.name);
@@ -68,6 +68,12 @@ public class LevelController : MonoBehaviour
                     }
                     else if(hit.transform.name == "door"){
                         hit.transform.GetComponent<OpenDoor>().Open();
+                    }
+                    else if(hit.transform.name == "doorLeft" || hit.transform.name == "doorRight"){
+                        hit.transform.GetComponent<OpenCloset>().StayOpen();
+                    }
+                    else if(hit.transform.name == "laptop"){
+                        hit.transform.parent.transform.GetComponent<CollectLaptop>().Collect();
                     }
                     
                 }

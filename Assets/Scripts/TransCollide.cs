@@ -28,6 +28,7 @@ public class TransCollide : MonoBehaviour
 
         if (other.name == "TextTriggerParent")
         {
+            //Debug.Log("ParentsRoomText");
             StartCoroutine(SceneManager.GetComponent<SceneTransitions>().LoadStart());
         }
 
