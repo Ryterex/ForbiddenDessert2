@@ -7,22 +7,22 @@ using TMPro;
 public class DialogueController : MonoBehaviour
 {
    // Start is called before the first frame update
-    public GameObject nameText;
+    //public GameObject nameText;
     public GameObject dialogueText;
 
     //public GameObject[] interactables;
 
     private Queue<string> sentences;
-    private Queue<string> names;
+    //private Queue<string> names;
     private float textSpeed;
     public Animator animator;
 
     void Start()
     {
-        nameText = GameObject.Find("NameText");
+        //nameText = GameObject.Find("NameText");
         dialogueText = GameObject.Find("DialogueText");;
         sentences = new Queue<string>();
-        names = new Queue<string>();
+        //names = new Queue<string>();
         textSpeed = 0.01f;
 
         
@@ -39,16 +39,16 @@ public class DialogueController : MonoBehaviour
             interactable.GetComponent<BoxCollider2D>().enabled = false;
         }
         */
-        names.Clear();
+        //names.Clear();
         sentences.Clear();
         foreach (string sentence in dialogue.sentences){
             sentences.Enqueue(sentence);
         }
-
+        /*
         foreach (string Name in dialogue.names)
         {
             names.Enqueue(Name);
-        }
+        }*/
 
         DisplayNextSentence();
     }
@@ -60,8 +60,8 @@ public class DialogueController : MonoBehaviour
             return;
         }
 
-        string Name = names.Dequeue();
-        nameText.GetComponent<TextMeshProUGUI>().text = Name;
+        //string Name = names.Dequeue();
+        //nameText.GetComponent<TextMeshProUGUI>().text = Name;
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));

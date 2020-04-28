@@ -31,8 +31,7 @@ public class OpenDoor : MonoBehaviour
         } else if(!doorOpen){
             doorOpen = true;
             StartCoroutine(Close());
-        } 
-        
+        }   
     }
 
     IEnumerator Close(){
