@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TextAppear : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class TextAppear : MonoBehaviour
     public GameObject textTriggerStart1;
     public GameObject textTriggerSis1;
     public GameObject textTriggerBath1;
+    public GameObject textTriggerSisHall;
     public GameObject stopColliderBath1;
     public GameObject stopColliderHallway;
     public GameObject stopColliderSis;
@@ -23,6 +25,10 @@ public class TextAppear : MonoBehaviour
     public InventoryItem battery;
     public GameObject batteryModel; //the actual battery
     public GameObject batteryLight; //the light above the battery collectible
+    public GameObject inventory;
+    public Sprite flashlightInv;
+    public Sprite flashlightInvNoBat;
+    public bool flashflicker = false;
 
     //this bool is just here for testing the structure of the game after the laptop is found
     //doesnt actually mean the laptop has been found
@@ -42,6 +48,17 @@ public class TextAppear : MonoBehaviour
             stopColliderHallway.SetActive(false);
             stopColliderSis.SetActive(false);
             flashSpotLight.SetActive(false);
+            textTriggerHallway1.SetActive(false);
+            textTriggerSisHall.SetActive(false);
+
+            if (flashflicker == false)
+            {
+                inventory.GetComponent<Image>().sprite = flashlightInv;
+            } else
+            {
+                inventory.GetComponent<Image>().sprite = flashlightInvNoBat;
+            }
+
         }
 
         if (isCollectedDummy == true)
@@ -57,19 +74,20 @@ public class TextAppear : MonoBehaviour
             flashFlickerTrigger.SetActive(false);
             playerLight.SetActive(true);
             batteryLight.SetActive(false);
+            flashflicker = false;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         //if laptop is collected dummy script
-        /*
+        
         if (other.name == "LaptopCollectDUMMY")
         {
             //Debug.Log("LaptopFoundText");
             other.GetComponent<DialogueTrigger>().TriggerDialogue();
             isCollectedDummy = true;
-        }*/
+        }
 
         if (other.tag == "HallCollider")
         {
@@ -106,12 +124,13 @@ public class TextAppear : MonoBehaviour
             other.GetComponent<DialogueTrigger>().TriggerDialogue();
         }
 
-        if (other.name == "FlashlightFlickerTrigger")
+        /*if (other.name == "FlashlightFlickerTrigger")
         {
             //Debug.Log("FlashFlickerText");
             other.GetComponent<DialogueTrigger>().TriggerDialogue();
             playerLight.SetActive(false);
-        }
+            inventory.GetComponent<Image>().sprite = flashlightInvNoBat;
+        }*/
 
         if (other.name == "FlashlightFlickerTrigger")
         {
@@ -119,6 +138,8 @@ public class TextAppear : MonoBehaviour
             other.GetComponent<DialogueTrigger>().TriggerDialogue();
             batteryModel.SetActive(true);
             batteryLight.SetActive(true);
+            playerLight.SetActive(false);
+            flashflicker = true;
         }
 
 
