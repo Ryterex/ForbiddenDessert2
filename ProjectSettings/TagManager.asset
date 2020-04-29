@@ -10,6 +10,7 @@ TagManager:
   - SceneFade
   - Door
   - HallCollider
+  - Food
   layers:
   - Default
   - TransparentFX

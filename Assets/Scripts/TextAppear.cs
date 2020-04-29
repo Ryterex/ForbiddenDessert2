@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class TextAppear : MonoBehaviour
 {
 
     public GameObject textTriggerHallway1;
+    public GameObject boredText;
     public GameObject textTriggerStart1;
     public GameObject textTriggerSis1;
     public GameObject textTriggerBath1;
@@ -30,6 +32,9 @@ public class TextAppear : MonoBehaviour
     public Sprite flashlightInvNoBat;
     public bool flashflicker = false;
 
+    public Animator animator;
+    public GameObject SceneManager;
+
     //this bool is just here for testing the structure of the game after the laptop is found
     //doesnt actually mean the laptop has been found
     public bool isCollectedDummy = false;
@@ -43,6 +48,15 @@ public class TextAppear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(animator.GetBool("IsOpen")){
+            this.gameObject.GetComponent<FirstPersonController>().m_WalkSpeed = 0;
+            this.gameObject.GetComponent<FirstPersonController>().m_RunSpeed = 0;
+        } else{
+            this.gameObject.GetComponent<FirstPersonController>().m_WalkSpeed = 1;
+            this.gameObject.GetComponent<FirstPersonController>().m_RunSpeed = 2;
+        }
+
         if (fLight.collected)
         {
             stopColliderHallway.SetActive(false);
@@ -142,6 +156,15 @@ public class TextAppear : MonoBehaviour
             flashflicker = true;
         }
 
+        if(other.name == "StartingText"){
+            StartCoroutine(waitForLoad());
+        }
 
+    }
+    
+    IEnumerator waitForLoad(){
+        yield return new WaitForSeconds(1.5f);
+        boredText.GetComponent<DialogueTrigger>().TriggerDialogue();
+        boredText.GetComponent<BoxCollider>().enabled = false;
     }
 }
