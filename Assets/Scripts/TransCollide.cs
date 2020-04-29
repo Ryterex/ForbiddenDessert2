@@ -7,6 +7,8 @@ public class TransCollide : MonoBehaviour
 
     public GameObject SceneManager;
 
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,13 +31,34 @@ public class TransCollide : MonoBehaviour
         if (other.name == "TextTriggerParent")
         {
             //Debug.Log("ParentsRoomText");
-            StartCoroutine(SceneManager.GetComponent<SceneTransitions>().LoadStart());
+            other.GetComponent<DialogueTrigger>().TriggerDialogue();
+            
+            
         }
 
         if (other.name == "StairFailTrigger")
         {
-            Debug.Log("StairFallText");
-            StartCoroutine(SceneManager.GetComponent<SceneTransitions>().StairFail());
+            //Debug.Log("StairFallText");
+            other.GetComponent<DialogueTrigger>().TriggerDialogue();
+            
+        }
+    }
+
+    private void OnTriggerStay(Collider other){
+        if (other.name == "TextTriggerParent")
+        {
+            if(!animator.GetBool("IsOpen")){
+                StartCoroutine(SceneManager.GetComponent<SceneTransitions>().LoadStart());
+            }
+            
+        }
+
+        if (other.name == "StairFailTrigger")
+        {
+            //Debug.Log("StairFallText");
+            if(!animator.GetBool("IsOpen")){
+                StartCoroutine(SceneManager.GetComponent<SceneTransitions>().LoadStart());
+            }
         }
     }
 }

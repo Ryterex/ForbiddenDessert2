@@ -17,6 +17,8 @@ public class LevelController : MonoBehaviour
     public Animator animator;
 
     public GameObject Map;
+
+    public GameObject SceneManager;
     void Start()
     {
         flash = false;
@@ -24,6 +26,7 @@ public class LevelController : MonoBehaviour
         batteries.collected = false;
         Map = GameObject.FindGameObjectWithTag("Map");
         flashText = GameObject.Find("FlashText");
+        SceneManager = GameObject.Find("SceneManager");
         flashText.SetActive(false);
         Map.SetActive(false);
         inventory = GameObject.FindGameObjectsWithTag("Inventory");
@@ -54,6 +57,11 @@ public class LevelController : MonoBehaviour
             flash = true;
             flashText.SetActive(true);
         }
+
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
         
 
         //this is for when interacting with an object 
@@ -75,10 +83,17 @@ public class LevelController : MonoBehaviour
                     else if(hit.transform.name == "laptop"){
                         hit.transform.parent.transform.GetComponent<CollectLaptop>().Collect();
                     }
-                    
+                    if(hit.transform.tag == "Food"){
+                        hit.transform.GetComponent<DialogueTrigger>().TriggerDialogue();
+                        hit.transform.GetComponent<FoodCollected>().startOver = true;
+                    }   
                 }
             }
             
         }
+    }
+    public void startOver(){
+        StartCoroutine(SceneManager.GetComponent<SceneTransitions>().LoadMainMenu());
+        return;
     }
 }

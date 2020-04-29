@@ -45,6 +45,13 @@ public class SceneTransitions : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    public IEnumerator LoadMainMenu()
+    {
+        transitionAnim.SetTrigger("end");
+        yield return new WaitForSeconds(5.0f);
+        SceneManager.LoadScene("StartMenu");
+    }
+
     public IEnumerator LoadStart()
     {
         transitionAnim.SetTrigger("end");
